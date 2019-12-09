@@ -3,7 +3,9 @@ from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D
 from keras.layers import Activation, Dropout, Flatten, Dense
 from keras import backend as K
-
+import json
+from tensorflow.python.client import device_lib
+print(device_lib.list_local_devices())
 
 img_width, img_height = 224, 224
 
@@ -11,7 +13,7 @@ train_data_dir = 'Train'
 validation_data_dir = 'Test'
 nb_train_samples = 230
 nb_validation_samples = 60
-epochs = 100
+epochs = 10
 batch_size = 16
 
 if K.image_data_format() == 'channels_first':
@@ -66,4 +68,10 @@ model.fit_generator(train_generator,
                     epochs=epochs, validation_data=validation_generator,
                     validation_steps=nb_validation_samples // batch_size)
 
+model_json = model.to_json()
+with open("model_in_json.json", "w") as json_file:
+    json.dump(model_json, json_file)
+
 model.save_weights('model_saved.h5')
+
+model.
