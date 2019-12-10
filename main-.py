@@ -6,7 +6,7 @@ import json
 from tensorflow.python.client import device_lib
 print(device_lib.list_local_devices())
 
-img_width, img_height = 128, 128
+img_width, img_height = 224, 224
 
 train_data_dir = 'Train'
 validation_data_dir = 'Test'

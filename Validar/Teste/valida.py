@@ -8,7 +8,7 @@ model = tensorflow.keras.models.load_model('keras_model.h5')
 
 
 data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
-image = Image.open(r'11.jpeg')
+image = Image.open(r'15.jpeg')
 image = image.resize((224, 224))
 image_array = np.asarray(image)
 normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
